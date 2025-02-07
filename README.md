@@ -1,16 +1,19 @@
-# Material Design Icons for Power BI
+# Power BI Google Material Icons Integration
 
-This repository contains a CSV file with all 7,000+ icons from Google's Material Design Icons library, formatted for easy use in Power BI.
+This repository provides a Power Query (M) solution for integrating Google Material Icons into Power BI reports. The code transforms a CSV file containing Material Icon definitions into SVG data URLs that can be directly used in Power BI visuals.
 
-## Contents
+## Overview
 
-- `outlined_icons.csv`: Contains all Material Design outlined icons with their:
-  - Icon names (as used in the official Material Design library)
-  - SVG path data ready for Power BI usage
+The solution enables you to:
+- Load Material Icons from a CSV source
+- Transform icon definitions into browser-compatible SVG data URLs
+- Use the icons in Power BI reports with consistent 48x48 pixel dimensions
+- Maintain a standardized black fill color (#000000)
+- Leverage Material Design's viewBox settings
 
-## How to Use in Power BI
+## Power Query Code
 
-Copy and paste this Power Query code into Power BI to load all icons:
+```powerquery
 let
     // Load CSV file from GitHub repository
     Source = Csv.Document(
@@ -50,23 +53,41 @@ let
     )
 in
     CreatedSVGUrls
+```
 
+## How to Use
 
-This will create a table with two columns:
-- `IconName`: The name of the icon as used in Material Design
-- `IconURL`: A complete SVG data URL that can be used directly in Power BI visuals
+1. Copy the Power Query code into your Power BI report
+2. The query will create a table with two columns:
+   - `IconName`: The name of the Material Icon
+   - `IconURL`: The complete SVG data URL that can be used in Power BI
 
-## Customization
+## Features
 
-You can modify the icons by adjusting the SVG parameters in the code:
-- Change `width='48' height='48'` for different icon sizes
-- Modify `fill='#000000'` for different colors
-- Adjust the `viewBox` settings for different scaling
+- **Standardized Dimensions**: All icons are set to 48x48 pixels
+- **Consistent Styling**: Black fill color (#000000) for all icons
+- **Material Design Viewbox**: Uses the standard Material Design viewBox settings (0 -960 960 960)
+- **UTF-8 Encoding**: Ensures proper character handling
+- **Browser-Compatible**: Generated SVG URLs work across different browsers
 
-## Source
+## Use Cases in Power BI
 
-Icons are from [Google's Material Design Icons](https://fonts.google.com/icons) library, converted to a Power BI-friendly format.
+- Custom navigation buttons
+- Visual headers and tooltips
+- KPI indicators
+- Interactive buttons in Power BI reports
+- Custom visual elements
+
+## Notes
+
+- The icons are sourced from Google's Material Icons library
+- All icons are rendered in black but can be modified by changing the fill color in the SVG path
+- The viewBox settings ensure proper scaling and positioning of the icons
+
+## Contributing
+
+Feel free to contribute to this repository by submitting issues or pull requests.
 
 ## License
 
-These icons are available under the [Apache License 2.0](https://github.com/google/material-design-icons/blob/master/LICENSE).
+This project uses Google Material Icons which are available under the Apache License 2.0.
